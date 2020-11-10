@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
   Record.find()
     .lean()
+    .sort({ date: 'desc' })
     .then(records => {
       res.render('index', { records })
       console.log(records.date)
