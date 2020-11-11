@@ -1,19 +1,15 @@
 <p>
   {{totalAmount}}
 </p>
-<div class="input-group-append">
-  <div class="dropdown ml-1">
-    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" name="sort"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      顯示順序
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/?sort=rating&order=-1" name="-1">評分高優先</a>
-      <a class="dropdown-item" href="/?sort=category&order=1" name="1">類別：A-Z</a>
-      <a class="dropdown-item" href="/?sort=location&order=1" name="1">地址：A-Z</a>
-      <a class="dropdown-item" href="/?sort=name&order=1" name="1">餐廳名稱：A-Z</a>
-      <a class="dropdown-item" href="/?sort=name&order=-1" name="-1">餐廳名稱：Z-A</a>
-    </div>
+<div class="dropdown mb-5">
+  <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" name="sort"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    篩選
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {{#each category}}
+    <a class="dropdown-item" herf="#" name="{{this.name}}">{{this.name}}</a>
+    {{/each}}
   </div>
 </div>
 
