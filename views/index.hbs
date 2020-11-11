@@ -1,8 +1,27 @@
-<a href="./records/new">Create</a>
-{{#each records}}
-<h2>{{this.date}}在{{this.name}}花了{{this.amount}}，這歸類在{{this.category}}之下</h2>
-<a href="./records/{{ this._id }}/edit">edit</a>
-<form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-  <button type="submit">delete</button>
-</form>
-{{/each}}
+<p>
+  {{totalAmount}}
+</p>
+
+<ul class="list-group">
+  {{#each records}}
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-auto mr-auto">
+        <h4 style="display: inline; vertical-align: middle;">
+          {{ this.name }}
+        </h4>
+      </div>
+      <div class="col-auto">
+        <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
+        <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+          <button class="btn btn-danger" type="submit">delete</button>
+        </form>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+
+
+
+{{!-- <p>{{this.date}}在{{this.name}}花了{{this.amount}}，這歸類在{{this.category}}之下</p> --}}
