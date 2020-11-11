@@ -3,9 +3,8 @@ const router = express.Router()
 
 const Record = require('../../models/record')
 
-let totalAmount = 0
-
 router.get('/', (req, res) => {
+  let totalAmount = 0
   Record.find()
     .lean()
     .sort({ date: 'desc' })
