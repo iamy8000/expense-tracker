@@ -7,6 +7,7 @@ const Category = require('../../models/category')
 const record = require('../../models/record')
 
 router.get('/', (req, res) => {
+  const month = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
   let totalAmount = 0
   let category = ''
 
@@ -19,15 +20,15 @@ router.get('/', (req, res) => {
       .catch(error => console.log(error))
   }
 
-  if (req.query.filter) { //有篩選
+  if (req.query.categoryFilter) { //類別篩選
     generateCategory()
     Record.find()
       .lean()
       .sort({ date: 'desc' })
       .then(items => {
-        const records = []
+        const records = [] //處理category篩選
         items.forEach(item => {
-          if (item.category === req.query.filter)
+          if (item.category === req.query.categoryFilter)
             records.push(item)
         })
         records.forEach(item => {
@@ -35,10 +36,34 @@ router.get('/', (req, res) => {
           let isoDate = item.date //處理時間格式
           item.date = moment(isoDate).format('YYYY-MM-DD')
         })
-        res.render('index', { records, totalAmount, category })
+        res.render('index', { records, totalAmount, category, month })
       })
+  }
 
-  } else { //無篩選
+  else if (req.query.monthFilter) { //月份篩選
+    generateCategory()
+    const monthFilter = Number(req.query.monthFilter)
+    Record.find()
+      .lean()
+      .sort({ date: 'desc' })
+      .then(items => {
+        const records = [] //處理月份篩選
+        items.forEach(item => {
+          let isoMonth = Number(moment(item.date).format('MM'))
+          if (isoMonth === monthFilter) {
+            records.push(item)
+          }
+        })
+        records.forEach(item => {
+          totalAmount = totalAmount + item.amount
+          let isoDate = item.date
+          item.date = moment(isoDate).format('YYYY-MM-DD')
+        })
+        res.render('index', { records, totalAmount, category, month })
+      })
+  }
+
+  else { //無篩選
     generateCategory()
     Record.find()
       .lean()
@@ -51,27 +76,11 @@ router.get('/', (req, res) => {
           record.date = moment(isoDate).format("YYYY-MM-DD")
         })
 
-        res.render('index', { records, totalAmount, category })
+        res.render('index', { records, totalAmount, category, month })
       })
       .catch(error => console.error(error))
   }
 
 })
-
-// } else { //無篩選
-//   generateCategory()
-//   Record.find()
-//     .lean()
-//     .sort({ date: 'desc' })
-//     .then(records => {
-//       records.forEach(record => { //顯示總金額
-//         totalAmount = totalAmount + record.amount
-//       })
-//       res.render('index', { records, totalAmount, category })
-//     })
-//     .catch(error => console.error(error))
-// }
-
-// })
 
 module.exports = router

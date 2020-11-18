@@ -3,11 +3,22 @@
   <div class="dropdown text-center">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      篩選
+      類別篩選
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       {{#each category}}
-      <a class="dropdown-item" href="/?filter={{this.name}}">{{this.name}}</a>
+      <a class="dropdown-item" href="/?categoryFilter={{this.name}}">{{this.name}}</a>
+      {{/each}}
+    </div>
+  </div>
+  <div class="dropdown text-center">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      月份篩選
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {{#each month}}
+      <a class="dropdown-item" href="/?monthFilter={{this}}">{{this}}月</a>
       {{/each}}
     </div>
   </div>
