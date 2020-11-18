@@ -24,8 +24,15 @@
 <body class="bg-light">
   <header>
     <nav class="navbar navbar-dark bg-primary justify-content-between">
-      <a class="navbar-brand" href="/">Expense Tracker</a>
-      <a class="btn btn-outline-light" href="/records/new">Create</a>
+      <a class="navbar-brand" href="/">{{#if isAuthenticated}}{{ user.name}}的{{/if}}Expense Tracker</a>
+      {{#if isAuthenticated}}
+      <div>
+        <a href="/records/new" class="btn btn-outline-light">Create</a>
+        <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      </div>
+      {{else}}
+      <a href="/users/login" class="btn btn-outline-light">Login</a>
+      {{/if}}
     </nav>
   </header>
   <main>
