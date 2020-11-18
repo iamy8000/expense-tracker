@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
-// const category = require('../../models/category')
 
 router.get('/new', (req, res) => {
   Category.find()
