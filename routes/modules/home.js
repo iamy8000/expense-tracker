@@ -7,11 +7,12 @@ const Category = require('../../models/category')
 const record = require('../../models/record')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const month = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
   let totalAmount = 0
   let category = ''
 
-  function generateCategory() {
+  function generateCategory() { //產生類別選單
     Category.find()
       .lean()
       .then(item => {
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
 
   if (req.query.categoryFilter) { //類別篩選
     generateCategory()
-    Record.find()
+    Record.find({ userId })
       .lean()
       .sort({ date: 'desc' })
       .then(items => {
@@ -43,7 +44,7 @@ router.get('/', (req, res) => {
   else if (req.query.monthFilter) { //月份篩選
     generateCategory()
     const monthFilter = Number(req.query.monthFilter)
-    Record.find()
+    Record.find({ userId })
       .lean()
       .sort({ date: 'desc' })
       .then(items => {
@@ -65,7 +66,7 @@ router.get('/', (req, res) => {
 
   else { //無篩選
     generateCategory()
-    Record.find()
+    Record.find({ userId })
       .lean()
       .sort({ date: 'desc' })
       .then(records => {
