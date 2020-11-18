@@ -1,33 +1,15 @@
-<p>
-  目前總支出：{{totalAmount}}
-</p>
-{{!-- <form action="/" method="GET">
-  <div class="input-group-append">
-    <div class="dropdown mb-5">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" name="filter"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        篩選
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {{#each category}}
-        <a class="dropdown-item" herf="/?filter={{this.name}}" name="{{this.name}}">{{this.name}}</a>
-        {{/each}}
-      </div>
+<div class="card card-body mb-5">
+  <h5 class="text-center">目前總支出：{{totalAmount}}</h5>
+  <div class="dropdown text-center">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      篩選
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {{#each category}}
+      <a class="dropdown-item" href="/?filter={{this.name}}">{{this.name}}</a>
+      {{/each}}
     </div>
-  </div>
-</form> --}}
-
-<div class="dropdown mb-5">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-    aria-haspopup="true" aria-expanded="false">
-    篩選
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    {{#each category}}
-    <a class="dropdown-item" href="/?filter={{this.name}}">{{this.name}}</a>
-    {{/each}}
-    {{!-- <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a> --}}
   </div>
 </div>
 
@@ -35,10 +17,16 @@
   {{#each records}}
   <li class="list-group-item">
     <div class="row">
+      <div class="col-auto" id="{{this.category}}">
+        <i class="fas fa-home" style="display: inline; vertical-align: middle;"></i>
+      </div>
       <div class="col-auto mr-auto">
-        <h4 style="display: inline; vertical-align: middle;">
-          {{ this.name }}
-        </h4>
+        <h4 style="display: inline; vertical-align: middle;">{{ this.name }}</h4>
+        <br>
+        <h4>{{this.date}}</h4>
+      </div>
+      <div>
+        <h4>{{this.amount}}</h4>
       </div>
       <div class="col-auto">
         <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
@@ -50,7 +38,3 @@
   </li>
   {{/each}}
 </ul>
-
-
-
-{{!-- <p>{{this.date}}在{{this.name}}花了{{this.amount}}，這歸類在{{this.category}}之下</p> --}}
