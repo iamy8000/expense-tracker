@@ -6,6 +6,8 @@ const moment = require('moment')
 const session = require('express-session')
 
 const router = require('./routes')
+const usePassport = require('./config/passport')
+
 require('./config/mongoose')
 
 const app = express()
@@ -22,6 +24,7 @@ app.use(session({
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
+usePassport(app)
 app.use(router)
 
 app.listen(3000, () => {
