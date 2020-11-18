@@ -55,8 +55,8 @@ router.get('/', (req, res) => {
           }
         })
         records.forEach(item => {
-          totalAmount = totalAmount + item.amount
-          let isoDate = item.date
+          totalAmount = totalAmount + item.amount //顯示總金額
+          let isoDate = item.date //處理時間格式
           item.date = moment(isoDate).format('YYYY-MM-DD')
         })
         res.render('index', { records, totalAmount, category, month })
