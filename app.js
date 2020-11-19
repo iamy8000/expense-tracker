@@ -5,6 +5,9 @@ const methodOverride = require('method-override')
 const moment = require('moment')
 const session = require('express-session')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const router = require('./routes')
 const usePassport = require('./config/passport')
@@ -17,7 +20,7 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -37,6 +40,6 @@ app.use((req, res, next) => {
 
 app.use(router)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('App is running on http://localhost: 3000')
 })
