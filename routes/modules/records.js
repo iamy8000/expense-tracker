@@ -29,8 +29,6 @@ router.get('/:id/edit', (req, res) => {
       Record.findOne({ _id, userId })
         .lean()
         .then((record) => {
-          record.date = moment(record.date).format("YYYY/MM/DD")
-          console.log(record.date)
           res.render('edit', { record, category })
         })
         .catch(error => console.log(error))
