@@ -38,7 +38,7 @@
 
 ```
 //將專案複製到電腦中
-$ git clone https://github.com/iamy8000/restaurant-list-mongodb.git
+$ git clone https://github.com/iamy8000/expense-tracker.git
 
 //進入專案資料夾
 $ cd expense-tracker
