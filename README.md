@@ -1,10 +1,10 @@
-#Expense Tracker Project!
+# Expense Tracker Project!
 
 ![Login Page](/public/images/login.png)
 ![Register Page](/public/images/register.png)
 ![Index Page](/public/images/index.png)
 ![Edit Page](/public/images/edit.png)
-![Create Page](/public/new.png)
+![Create Page](/public/images/new.png)
 
 使用者透過這個記帳網站：
 
