@@ -1,0 +1,124 @@
+body {
+  /* font-family: "Noto Sans TC"; */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body .container {
+  width: 50rem;
+}
+
+.navbar {
+  background-color: #604BF7;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.navbar .navbar-brand {
+  color: white
+}
+
+.navbar .navbar-brand:hover {
+  color: #283348;
+}
+
+/* #dashboard, #totalAmount, #totalAmount h1, #totalAmount h6, #filter, #categoryFilter , #monthFilter {
+  border: 1px black solid;
+} */
+
+#dashboard {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 20px 30px;
+  background-color: #fad9e1;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+#totalAmount h6{
+  font-size: small;
+  font-weight: 400;
+  color: rgb(104, 101, 101);
+}
+
+#totalAmount h1{
+  font-weight: 700;
+  color:#ff5f6f;
+  letter-spacing: 0.5rem;
+}
+
+#filter{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+#categoryFilter , #monthFilter{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+
+#categoryFilter button{
+  color: white;
+  background-color: #F68C93;
+  font-size: 12px;
+  width: 7rem;
+  height: 2rem;
+  text-align: center;
+  letter-spacing: 0.3rem;
+}
+
+#monthFilter button{
+  color: white;
+  background-color: #6F8DFA;
+  font-size: 12px;
+  width: 7rem;
+  height: 2rem;
+  text-align: center;
+  letter-spacing: 0.3rem;
+}
+
+#categoryFilter button:hover, 
+#monthFilter button:hover{
+  background-color: grey;
+  color: white;
+}
+
+#invoice{
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 30px 40px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+#invoice thead tr th{
+  font-weight: 400;
+  color: #ABA3AC;
+  border-top: white;
+}
+
+#editButton {
+  background-color: #b5ead7 !important;
+  color: #66666e !important;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 300;
+}
+
+#deleteButton {
+  background-color: #F68C93 !important;
+  color: #66666e !important;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 300;
+}
+
+#editButton:hover,
+#deleteButton:hover {
+  color: white !important;
+}
+
+
+
+
+

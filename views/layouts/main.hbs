@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 
   <!-- include bootstrap stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -21,22 +21,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-  <header>
-    <nav class="navbar navbar-dark bg-primary justify-content-between">
-      <a class="navbar-brand" href="/">{{#if isAuthenticated}}{{ user.name}}的{{/if}}Expense Tracker</a>
-      {{#if isAuthenticated}}
-      <div>
-        <a href="/records/new" class="btn btn-outline-light">Create</a>
-        <a href="/users/logout" class="btn btn-outline-light">Logout</a>
-      </div>
-      {{else}}
-      <a href="/users/login" class="btn btn-outline-light">Login</a>
-      {{/if}}
-    </nav>
-  </header>
+<body style="background-color:#eaeafa;">
+  <nav class=" navbar">
+    <a class="navbar-brand" href="/">Alpha Camp 記帳本</a>
+    {{#if isAuthenticated}}
+    <div>
+      <a href="/records/new" class="btn btn-outline-light">Create</a>
+      <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+    </div>
+    {{else}}
+    <a href="/users/login" class="btn btn-outline-light">Login</a>
+    {{/if}}
+  </nav>
+
   <main>
-    <div class="container mt-3">
+    <div class="container mt-5">
       {{{ body }}}
     </div>
   </main>

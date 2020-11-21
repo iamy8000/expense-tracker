@@ -1,4 +1,68 @@
-<div class="card card-body mb-5">
+<div class="row" id="dashboard">
+  <div class="col-6" id="totalAmount">
+    <h6>Hello {{#if isAuthenticated}}{{ user.name}}{{/if}}, 總支出為：</h6>
+    <h1>NT${{totalAmount}}</h1>
+  </div>
+  <div class="col-6" id="filter">
+    <div class="dropdown text-center" id="categoryFilter">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        類別篩選
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {{#each category}}
+        <a class="dropdown-item" href="/?categoryFilter={{this.name}}">{{this.name}}</a>
+        {{/each}}
+      </div>
+    </div>
+    <div class="dropdown text-center" id="monthFilter">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        月份篩選
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {{#each month}}
+        <a class="dropdown-item" href="/?monthFilter={{this}}">{{this}}月</a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="invoice">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ITEM</th>
+        <th scope="col">DATE</th>
+        <th scope="col">CATEGORY</th>
+        <th scope="col">AMOUNT</th>
+        <th scope="col">MORE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each records}}
+      <tr>
+        <th scope="row">{{this.name}}</th>
+        <td>{{this.date}}</td>
+        <td>{{this.category}}</td>
+        <td>${{this.amount}}</td>
+        <td>
+          <a class="btn btn-light btn-sm" id="editButton" href="./records/{{ this._id }}/edit"><i
+              class="fas fa-pen"></i></a>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn btn-light btn-sm" id="deleteButton" type="submit"
+              onclick="if (!confirm('Are you sure?')) { return false }"><span><i
+                  class="fas fa-trash-alt"></i></span></button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{!-- <div class="card card-body mb-5">
   <h5 class="text-center">目前總支出：{{totalAmount}}</h5>
   <div class="dropdown text-center">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -22,30 +86,31 @@
       {{/each}}
     </div>
   </div>
-</div>
-
-<ul class="list-group">
-  {{#each records}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto" id="{{this.category}}">
-        <i class="fas fa-home" style="display: inline; vertical-align: middle;"></i>
+</div> --}}
+{{!-- <div class="row" id="invoice">
+  <ul class="list-group col-12">
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto" id="{{this.category}}">
+          <i class="fas fa-home" style="display: inline; vertical-align: middle;"></i>
+        </div>
+        <div class="col-auto mr-auto">
+          <h4 style="display: inline; vertical-align: middle;">{{ this.name }}</h4>
+          <br>
+          <h4>{{this.date}}</h4>
+        </div>
+        <div>
+          <h4>{{this.amount}}</h4>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
+          <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">delete</button>
+          </form>
+        </div>
       </div>
-      <div class="col-auto mr-auto">
-        <h4 style="display: inline; vertical-align: middle;">{{ this.name }}</h4>
-        <br>
-        <h4>{{this.date}}</h4>
-      </div>
-      <div>
-        <h4>{{this.amount}}</h4>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-success" href="./records/{{ this._id }}/edit">edit</a>
-        <form action="./records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">delete</button>
-        </form>
-      </div>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+    </li>
+    {{/each}}
+  </ul>
+</div> --}}

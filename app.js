@@ -16,6 +16,9 @@ require('./config/mongoose')
 
 const app = express()
 
+// setting static files
+app.use(express.static('public'))
+
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
