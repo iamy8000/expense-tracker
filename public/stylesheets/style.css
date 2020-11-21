@@ -129,11 +129,11 @@ body .container {
   text-align: center;
 }
 
-#editPageForm {
-  border: lightgray 1px solid;
+#editPageForm, #newPageForm {
+  /* border: lightgray 1px solid; */
   border-radius: 5px;
-  padding: 1rem;
-  margin-bottom: 2rem;
+  /* padding: 1rem;
+  margin-bottom: 2rem; */
   /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); */
   font-family: "Noto Sans TC", sans-serif;
 }
