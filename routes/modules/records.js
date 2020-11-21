@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+const moment = require('moment')
 
 router.get('/new', (req, res) => {
   Category.find()
@@ -27,7 +28,11 @@ router.get('/:id/edit', (req, res) => {
     .then(category => {
       Record.findOne({ _id, userId })
         .lean()
-        .then((record) => res.render('edit', { record, category }))
+        .then((record) => {
+          record.date = moment(record.date).format("YYYY/MM/DD")
+          console.log(record.date)
+          res.render('edit', { record, category })
+        })
         .catch(error => console.log(error))
     })
     .catch(error => console.log(error))

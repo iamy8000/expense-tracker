@@ -1,5 +1,4 @@
 body {
-  /* font-family: "Noto Sans TC"; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -10,6 +9,9 @@ body .container {
 .navbar {
   background-color: #604BF7;
   font-family: "Noto Sans TC", sans-serif;
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-around;
 }
 
 .navbar .navbar-brand {
@@ -27,6 +29,8 @@ body .container {
 #dashboard {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
   padding: 20px 30px;
   background-color: #fad9e1;
   border-radius: 15px;
@@ -91,6 +95,7 @@ body .container {
   padding: 30px 40px;
   background-color: white;
   border-radius: 15px;
+  margin-bottom: 2rem;
 }
 
 #invoice thead tr th{
@@ -118,6 +123,20 @@ body .container {
   color: white !important;
 }
 
+/* edit page */
+#dashboard h3{
+  letter-spacing: 0.5rem;
+  text-align: center;
+}
+
+#editPageForm {
+  border: lightgray 1px solid;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  /* box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); */
+  font-family: "Noto Sans TC", sans-serif;
+}
 
 
 
